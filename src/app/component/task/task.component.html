@@ -1,0 +1,10 @@
+<div class="w-5/6 justify-items-center mx-auto flex flex-col">
+  <app-task-item *ngFor="let task of tasks" [task]="task"> </app-task-item>
+  <textarea
+    class="w-full border-2 border-dotted rounded-md p-2 bg-white h-40 resize-none"
+    placeholder="Say something!!"
+  ></textarea>
+  <div class="flex flex-row justify-end">
+    <app-button (btnClick)="AddTask()" color="green" text="Add"></app-button>
+  </div>
+</div>
