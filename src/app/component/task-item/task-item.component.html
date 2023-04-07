@@ -1,12 +1,41 @@
-<div class="bg-blue-50 my-2 p-2 flex justify-between">
-  <div>
-    <h3>
-      <b>{{ task.text }}</b>
-    </h3>
-    <h6>Last updated on: {{ task.day }}</h6>
+<form
+  (ngSubmit)="OnUpdate(task)"
+  class="bg-gray-200 h-80 my-2 p-2 flex flex-col justify-between border-2 rounded-md w-[420px]"
+>
+  <div class="flex flex-row">
+    <div class="pr-2">
+      <h1 class="text-3xl">
+        <b>{{ task.id }}</b>
+      </h1>
+    </div>
+    <div>
+      <h1 class="text-2xl font-semibold my-auto w-full">
+        <input
+          (click)="enable()"
+          name="newtext"
+          type="text"
+          placeholder="{{ task.text }}"
+          [(ngModel)]="newtext"
+          [disabled]="toggleButton"
+        />
+      </h1>
+    </div>
   </div>
-  <div>
-    <app-button text="x" color="red"></app-button>
-    <app-button color="green" text="update"></app-button>
+  <div class="bg-white h-full p-2 m-2">
+    <textarea
+      class="w-full border-2 border-dotted rounded-md p-2 bg-white h-40 resize-none"
+      placeholder="{{ task.description }}"
+      type="text"
+      name="newdescription"
+      (click)="enable()"
+      disabled="true"
+      [(ngModel)]="newdescription"
+      [disabled]="toggleButton"
+    ></textarea>
   </div>
-</div>
+  <h6>Last updated on: {{ task.day }}</h6>
+  <div class="flex justify-end">
+    <app-button color="green" type="submit" text="update"></app-button>
+    <app-button text="x" (click)="OnDelete(task)" color="red"> </app-button>
+  </div>
+</form>

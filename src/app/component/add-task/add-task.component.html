@@ -1,0 +1,24 @@
+<form
+  class="bg-blue-50 my-2 p-2 flex justify-between items-center w-full"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="w-full">
+    <h3>
+      <textarea
+        class="w-full m-auto resize-none"
+        rows="3"
+        type="text"
+        name="text"
+        [(ngModel)]="text"
+      ></textarea>
+    </h3>
+    <h6>
+      Last updated on:
+      <input class="w-full m-auto" type="text" name="day" [(ngModel)]="day" />
+    </h6>
+  </div>
+  <div class="flex flex-col px-2 items-center">
+    <app-button text="clear" color="red"> </app-button>
+    <app-button color="green" text="add"></app-button>
+  </div>
+</form>

@@ -1,10 +1,42 @@
-<div class="w-5/6 justify-items-center mx-auto flex flex-col">
-  <app-task-item *ngFor="let task of tasks" [task]="task"> </app-task-item>
-  <textarea
-    class="w-full border-2 border-dotted rounded-md p-2 bg-white h-40 resize-none"
-    placeholder="Say something!!"
-  ></textarea>
-  <div class="flex flex-row justify-end">
-    <app-button (btnClick)="AddTask()" color="green" text="Add"></app-button>
-  </div>
+<div class="justify-items-start mx-auto flex flex-row flex-wrap w-full">
+  <!-- <app-add-task (onAddTask)="onSubmit()"></app-add-task> -->
+  <app-task-item
+    *ngFor="let task of tasks"
+    [task]="task"
+    class="px-5"
+    (onDeleteTask)="onDeleteTask(task)"
+    (onUpdateTask)="onUpdateTask($event)"
+  >
+  </app-task-item>
+  <form
+    (ngSubmit)="onAddTask()"
+    class="bg-gray-200 h-80 my-2 p-2 flex flex-col justify-between border-2 rounded-md w-[430px] mx-4"
+  >
+    <div class="flex flex-row">
+      <div class="pr-2">
+        <h1 class="text-3xl">
+          <b>3</b>
+        </h1>
+      </div>
+      <div>
+        <input
+          class="px-2 w-full text-2xl font-semibold my-auto"
+          placeholder="title:"
+          [(ngModel)]="text"
+          type="text"
+          name="text"
+        />
+      </div>
+    </div>
+    <textarea
+      class="w-full border-2 border-dotted rounded-md p-2 bg-white h-40 resize-none"
+      placeholder="Say something!!"
+      type="text"
+      name="description"
+      [(ngModel)]="description"
+    ></textarea>
+    <div class="flex justify-end">
+      <app-button color="green" text="add" type="submit"></app-button>
+    </div>
+  </form>
 </div>
